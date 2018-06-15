@@ -35,8 +35,10 @@ public class PingClient {
 			int totalBytesRcvd = 0;
 			int bytesRcvd;
 			while (totalBytesRcvd < data.length){
-				if((bytesRcvd=in.read(data, totalBytesRcvd, data.length - totalBytesRcvd))== -1)
+				if((bytesRcvd=in.read(data, totalBytesRcvd, data.length - totalBytesRcvd))== -1){
+					socket.close();
 					throw new SocketException("Connection closed early");
+				}
 				totalBytesRcvd += bytesRcvd;
 			}
 			

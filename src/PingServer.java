@@ -15,9 +15,11 @@ public class PingServer {
 		
 		//ServerSocket serverSocket = new ServerSocket(serverPort); 
 		
-		ServerSocket serverSocket = new ServerSocket(6667); //debugging
+		
 		int recvMsgSize;
 		byte[] receiveBuffer = new byte [BUFFERSIZE];
+		
+			try(ServerSocket serverSocket = new ServerSocket(6667)){
 		
 		while (true){
 			Socket clientSocket = serverSocket.accept();
@@ -35,6 +37,12 @@ public class PingServer {
 			}
 			clientSocket.close();
 		}
+			}
+			catch (IOException ex){
+				System.out.println("Server exception: " + ex.getMessage());
+				ex.printStackTrace();
+			}
+		
 	}
 }
 
