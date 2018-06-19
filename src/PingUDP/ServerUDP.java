@@ -8,9 +8,9 @@ public class ServerUDP {
 	
 	public static void main(String args[]) throws IOException{
 		
-		int servPort = 6668;
+		int servPort = 6669;
 		
-		try (DatagramSocket socket = new DatagramSocket(servPort)){
+		DatagramSocket socket = new DatagramSocket(servPort);
 		DatagramPacket packet = new DatagramPacket(new byte[ECHOMAX], ECHOMAX);
 		
 		while(true){
@@ -24,6 +24,6 @@ public class ServerUDP {
 			
 		}
 	}
-}
+
 	
 
